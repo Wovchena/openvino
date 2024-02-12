@@ -38,9 +38,9 @@ def get_cmd_output(*cmd):
         output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, universal_newlines=True, encoding='utf-8', env=env_vars, timeout=60.0)
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
         if isinstance(error, subprocess.CalledProcessError):
-            print(f"'{' '.join(map(str, cmd))}' returned {error.returncode}.")
+            print(f'{" ".join(map(str, cmd))} returned {error.returncode}')
         else:
-            print(f"'{' '.join(map(str, cmd))}' timed out after {error.timeout} seconds.")
+            print(f'{" ".join(map(str, cmd))} timed out after {error.timeout} seconds')
         print('Env vars:')
         print(env_vars)
         print('Output:')
