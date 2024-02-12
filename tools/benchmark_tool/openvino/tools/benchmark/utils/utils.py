@@ -290,9 +290,13 @@ def parse_devices(device_string):
     if device_string.find(":") != -1:
         hw_devices_str = device_string.partition(":")[-1]
         for hw_device in hw_devices_str.split(','):
-            if hw_device[0] == '-':
-                hw_device = hw_device[1:]
-            result.append(hw_device)
+            open_bracket = hw_device.find('(')
+            if -1 != open_bracket:
+                if ')' not in hw_device:
+                    raise Exception("Found '(' in device, but ')' is missing")
+                hw_device = hw_device[:open_bracket]
+            if hw_device[0] != '-':
+                result.append(hw_device)
     return result
 
 def parse_value_per_device(devices, values_string, value_type):

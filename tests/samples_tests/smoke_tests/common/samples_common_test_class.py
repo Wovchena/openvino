@@ -29,17 +29,21 @@ from shutil import which
 log.basicConfig(format="[ %(levelname)s ] %(message)s", level=log.INFO, stream=sys.stdout)
 
 def get_devices():
-    return os.environ.get("TEST_DEVICE", "CPU;MULTI:CPU;AUTO").split(';')
+    return os.environ.get("TEST_DEVICE", "CPU;AUTO;AUTO:CPU(1);AUTO:CPU(2);AUTO:-GPU;AUTO:-GPU(1);BATCH:CPU;BATCH:CPU(1);BATCH:CPU(2);MULTI:CPU;MULTI:CPU(1);MULTI:CPU(2)").split(';')
 
 
 def get_cmd_output(*cmd):
+    env_vars = {**os.environ, 'PYTHONIOENCODING': 'utf-8'}
     try:
-        output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, universal_newlines=True, encoding='utf-8', env={**os.environ, 'PYTHONIOENCODING': 'utf-8'}, timeout=60.0)
+        output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, universal_newlines=True, encoding='utf-8', env=env_vars, timeout=60.0)
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as error:
         if isinstance(error, subprocess.CalledProcessError):
-            print(f"'{' '.join(map(str, cmd))}' returned {error.returncode}. Output:")
+            print(f"'{' '.join(map(str, cmd))}' returned {error.returncode}.")
         else:
-            print(f"'{' '.join(map(str, cmd))}' timed out after {error.timeout} seconds. Output:")
+            print(f"'{' '.join(map(str, cmd))}' timed out after {error.timeout} seconds.")
+        print('Env vars:')
+        print(env_vars)
+        print('Output:')
         print(error.output)
         raise
     return output
@@ -51,7 +55,8 @@ def download(test_data_dir, file_path):
     lock_path = test_data_dir / 'download.lock'
     with contextlib.suppress(FileNotFoundError, PermissionError):
         lock_path.unlink()
-    for _ in range(9999):  # Give up after about 3 hours
+    GIVE_UP_AFTER_ABOUT_15_MINUTES = 999
+    for _ in range(GIVE_UP_AFTER_ABOUT_15_MINUTES):
         with contextlib.suppress(FileExistsError, PermissionError):
             with lock_path.open('x'):
                 if not file_path.exists():
@@ -72,16 +77,6 @@ def prepend(cache, inp='', model=''):
     if model:
         model = '-m', download(test_data_dir, unpacked / 'models' / 'public' / model)
     return *inp, *model
-
-
-class Environment:
-    """
-    Environment used by tests.
-
-    :attr env:  environment dictionary. populated dynamically from environment
-                configuration file.
-    """
-    env = {}
 
 
 def get_tests(cmd_params, use_device=True, use_batch=False):

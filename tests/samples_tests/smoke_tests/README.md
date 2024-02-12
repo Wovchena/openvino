@@ -21,7 +21,7 @@ a. Required:
     - IE_APP_PYTHON_PATH : path to python OV samples, e.g. '<INSTALL_DIR>/samples/python/'
     - Install openvino-*.whl to provide Python benchmark_app executable
 b. Optional:
-    - TEST_DEVICE=CPU;MULTI:CPU;AUTO by default
+    - "TEST_DEVICE=CPU;AUTO;AUTO:CPU(1);AUTO:CPU(2);AUTO:-GPU;AUTO:-GPU(1);BATCH:CPU;BATCH:CPU(1);BATCH:CPU(2);MULTI:CPU;MULTI:CPU(1);MULTI:CPU(2)" by default
 4. Run all test via pytest:
    ``` bash
     python -m pytest

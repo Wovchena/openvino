@@ -26,22 +26,27 @@ def get_executable(sample_language):
     return 'benchmark_app'
 
 
-def verify(sample_language, device, api=None, nireq=None, shape=None, data_shape=None, nstreams=None, layout=None, pin=None, cache=None, tmp_path=None):
+def verify(sample_language, cache, device, inp='', api='', nireq='', shape='', data_shape='', nstreams='', layout='', pin='', help='', tmp_path=''):
+    # *() unpacks into no arg instead of empty '' arg
     output = get_cmd_output(
         get_executable(sample_language),
-        *prepend(cache, '227x227/dog.bmp', 'squeezenet1.1/FP32/squeezenet1.1.xml'),
-        *('-nstreams', nstreams) if nstreams else '',
-        *('-layout', layout) if layout else '',
-        *('-nireq', nireq) if nireq else '',
-        *('-shape', shape) if shape else '',
-        *('-data_shape', data_shape) if data_shape else '',
-        *('-hint', 'none') if nstreams or pin else '',
-        *('-pin', pin) if pin else '',
-        *('-api', api) if api else '',
-        *('-dump_config', tmp_path / 'conf.json') if tmp_path else '',
-        *('-exec_graph_path', tmp_path / 'exec_graph.xml') if tmp_path else '',
-        '-d', device, '-b', '1', '-niter', '10'
+        *prepend(cache, inp, 'squeezenet1.1/FP32/squeezenet1.1.xml'),
+        *('-nstreams', nstreams) if nstreams else (),
+        *('-layout', layout) if layout else (),
+        *('-nireq', nireq) if nireq else (),
+        *('-shape', shape) if shape else (),
+        *('-data_shape', data_shape) if data_shape else (),
+        *('-hint', 'none') if nstreams or pin else (),
+        *('-pin', pin) if pin else (),
+        *('-api', api) if api else (),
+        *('-dump_config', tmp_path / 'conf.json') if tmp_path else (),
+        *('-exec_graph_path', tmp_path / 'exec_graph.xml') if tmp_path else (),
+        *('-d', device) if device else (),
+        *(help,) if help else (),
+        '-b', '1', '-niter', '10',
     )
+    if help:
+        return
     assert 'FPS' in output
     if tmp_path:
         assert (tmp_path / 'exec_graph.xml').exists()
@@ -57,45 +62,30 @@ def verify(sample_language, device, api=None, nireq=None, shape=None, data_shape
 
 
 @pytest.mark.parametrize('sample_language', ['C++', 'Python'])
-def test_benchmark_app_help(sample_language):
-    get_cmd_output(get_executable(sample_language), '-h')
-
-
-@pytest.mark.parametrize('sample_language', ['C++', 'Python'])
-@pytest.mark.parametrize('api', ['sync', 'async'])
-@pytest.mark.parametrize('nireq', ['4', ''])
-@pytest.mark.parametrize('device', get_devices())
-def test_nireq(sample_language, api, nireq, device, cache):
-    verify(sample_language, device, api=api, nireq=nireq, cache=cache)
+@pytest.mark.parametrize('api', ['', 'sync', 'async'])
+@pytest.mark.parametrize('nireq', ['', '4'])
+@pytest.mark.parametrize('help', ['', '-h', '--help'])
+@pytest.mark.parametrize('inp', ['', '227x227/dog.bmp'])
+@pytest.mark.parametrize('dump_config', [False, True])
+@pytest.mark.parametrize('device', [''] + get_devices())
+def test_greed_search(sample_language, api, nireq, device, help, inp, dump_config, cache, tmp_path):
+    verify(sample_language, cache, device, api=api, nireq=nireq, help=help, inp=inp, tmp_path=tmp_path if dump_config else '')
 
 
 @pytest.mark.skipif('CPU' not in get_devices(), reason='affinity is a CPU property')
 @pytest.mark.parametrize('sample_language', ['C++', 'Python'])
 @pytest.mark.parametrize('pin', ['YES', 'NO', 'NUMA', 'HYBRID_AWARE'])
 def test_pin(sample_language, pin, cache, tmp_path):
-    verify(sample_language, 'CPU', pin=pin, nstreams='2', cache=cache, tmp_path=tmp_path)
-
-
-@pytest.mark.parametrize('sample_language', ['C++', 'Python'])
-@pytest.mark.parametrize('device', sorted({'CPU', 'GPU'} & set(get_devices())))  # Determenisitic order is required for --numprocesses
-def test_simple(sample_language, device, cache, tmp_path):
-    verify(sample_language, device, cache=cache, tmp_path=tmp_path)
-
-
-@pytest.mark.parametrize('sample_language', ['C++', 'Python'])
-@pytest.mark.parametrize('api', ['sync', 'async'])
-@pytest.mark.parametrize('device', get_devices())
-def test_api(sample_language, api, device, cache, tmp_path):
-    verify(sample_language, device, api=api, cache=cache, tmp_path=tmp_path)
+    verify(sample_language, cache, 'CPU', pin=pin, nstreams='2', tmp_path=tmp_path)
 
 
 @pytest.mark.parametrize('sample_language', ['C++', 'Python'])
 @pytest.mark.parametrize('device', get_devices())
 def test_reshape(sample_language, device, cache):
-    verify(sample_language, device, shape='data[2,3,227,227]', cache=cache)
+    verify(sample_language, cache, device, shape='data[2,3,227,227]')
 
 
 @pytest.mark.parametrize('sample_language', ['C++', 'Python'])
 @pytest.mark.parametrize('device', get_devices())
 def test_dynamic_shape(sample_language, device, cache):
-    verify(sample_language, device, shape='[?,3,?,?]', data_shape='[1,3,227,227][1,3,227,227]', layout='[NCHW]', cache=cache)
+    verify(sample_language, cache, device, shape='[?,3,?,?]', data_shape='[1,3,227,227][1,3,227,227]', layout='[NCHW]')
