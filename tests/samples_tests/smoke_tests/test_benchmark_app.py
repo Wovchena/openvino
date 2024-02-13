@@ -30,7 +30,7 @@ def verify(sample_language, cache, device, inp='', api='', nireq='', shape='', d
     # *() unpacks into no arg instead of empty '' arg
     output = get_cmd_output(
         get_executable(sample_language),
-        *prepend(cache, inp, 'squeezenet1.1/FP32/squeezenet1.1.xml'),
+        *prepend(cache, 'squeezenet1.1/FP32/squeezenet1.1.xml', inp),
         *('-nstreams', nstreams) if nstreams else (),
         *('-layout', layout) if layout else (),
         *('-nireq', nireq) if nireq else (),

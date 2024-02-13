@@ -115,7 +115,6 @@ jobs:
           export WORKSPACE=$INSTALL_DIR
           export IE_APP_PATH=$INSTALL_DIR/samples_bin
           export IE_APP_PYTHON_PATH=$INSTALL_DIR/samples/python
-          export SHARE=$INSTALL_TEST_DIR/smoke_tests/samples_smoke_tests_data
 
           # Install Python benchmark_app by installing openvino-*.whl
           python3 -m pip install --ignore-installed PyYAML -r $INSTALL_TEST_DIR/smoke_tests/requirements.txt $INSTALL_DIR/tools/openvino-*.whl
@@ -129,6 +128,7 @@ jobs:
       - name: Upload Test Results
         uses: actions/upload-artifact@v3
         if: ${{ !cancelled() }}
+        # TODO: delete?
         with:
           name: test-results-samples
           path: ${{ env.INSTALL_TEST_DIR }}/TEST*.xml

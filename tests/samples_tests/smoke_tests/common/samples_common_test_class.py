@@ -69,15 +69,12 @@ def download(test_data_dir, file_path):
         time.sleep(1.0)
 
 
-def prepend(cache, inp='', model=''):
-    test_data_dir = cache.mkdir('test_data_dir')
+def prepend(cache, model, inp):
+    test_data_dir = cache.mkdir('test_data')
     unpacked = test_data_dir / 'samples_smoke_tests_data_2021.4'
     if inp:
         inp = '-i', download(test_data_dir, unpacked / 'validation_set' / inp)
-    if model:
-        model = '-m', download(test_data_dir, unpacked / 'models' / 'public' / model)
-    return *inp, *model
-
+    return '-m', download(test_data_dir, unpacked / 'models' / 'public' / model), *inp
 
 def get_tests(cmd_params, use_device=True, use_batch=False):
     # Several keys:
@@ -166,7 +163,7 @@ class SamplesCommonTestClass():
 
     @staticmethod
     def join_env_path(param, cache, executable_path, complete_path=True):
-        test_data_dir = cache.mkdir('test_data_dir')
+        test_data_dir = cache.mkdir('test_data')
         unpacked = test_data_dir / 'samples_smoke_tests_data_2021.4'
         if 'i' in param:
             # If batch > 1, then concatenate images
