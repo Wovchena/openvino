@@ -3,7 +3,6 @@ Background_Matting,None
 #DALLE2_pytorch,None - Not Supported on CPU
 LearningToPaint,None
 Super_SloMo,None,xfail,Unsupported ops aten::l1_loss aten::mse_loss
-#alexnet,None - Already tested by torchvision tests
 basic_gnn_edgecnn,None
 basic_gnn_gcn,None,xfail,CPU failed to allocate
 basic_gnn_gin,None

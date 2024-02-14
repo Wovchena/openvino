@@ -15,8 +15,7 @@ following requirements:
 
 - Models with only one input and output are supported.
 - The sample accepts any file format supported by ``core.read_model``.
-- The sample has been validated with: `alexnet <https://docs.openvino.ai/nightly/omz_models_model_alexnet.html>`__,
-  `googlenet-v1 <https://docs.openvino.ai/nightly/omz_models_model_googlenet_v1.html>`__ models.
+- The sample has been validated with: [mobilenet-v3-small-1.0-224-tf](https://docs.openvino.ai/nightly/omz_models_model_mobilenet_v3_small_1_0_224_tf.html).
 - To build the sample, use instructions available at :ref:`Build the Sample Applications <build-samples>`
   section in "Get Started with Samples" guide.
 
@@ -176,16 +175,16 @@ Example
 
             import openvino as ov
 
-            ov_model = ov.convert_model('./models/alexnet')
+            ov_model = ov.convert_model('./models/mobilenet-v3-small-1.0-224-tf')
             # or, when model is a Python model object
-            ov_model = ov.convert_model(alexnet)
+            ov_model = ov.convert_model(mobilenet-v3-small-1.0-224-tf)
 
       .. tab-item:: CLI
          :sync: cli
 
          .. code-block:: console
 
-            ovc ./models/alexnet
+            ovc ./models/mobilenet-v3-small-1.0-224-tf
 
 4. Perform inference of image files, using a model on a ``GPU``, for example:
 
@@ -196,14 +195,14 @@ Example
 
          .. code-block:: console
 
-            python classification_sample_async.py -m ./models/alexnet.xml -i ./test_data/images/banana.jpg ./test_data/images/car.bmp -d GPU
+            python classification_sample_async.py -m ./models/mobilenet-v3-small-1.0-224-tf.xml -i ./test_data/images/banana.jpg ./test_data/images/car.bmp -d GPU
 
       .. tab-item:: C++
          :sync: cpp
 
          .. code-block:: console
 
-            classification_sample_async -m ./models/googlenet-v1.xml -i ./images/dog.bmp -d GPU
+            classification_sample_async -m ./models/mobilenet-v3-small-1.0-224-tf.xml -i ./images/dog.bmp -d GPU
 
 
 Sample Output
@@ -220,7 +219,7 @@ Sample Output
       .. code-block:: console
 
          [ INFO ] Creating OpenVINO Runtime Core
-         [ INFO ] Reading the model: C:/test_data/models/alexnet.xml
+         [ INFO ] Reading the model: C:/test_data/models/mobilenet-v3-small-1.0-224-tf.xml
          [ INFO ] Loading the model to the plugin
          [ INFO ] Starting inference in asynchronous mode
          [ INFO ] Image path: /test_data/images/banana.jpg
@@ -270,8 +269,8 @@ Sample Output
          [ INFO ] Files were added: 1
          [ INFO ]     /images/dog.bmp
          [ INFO ] Loading model files:
-         [ INFO ] /models/googlenet-v1.xml
-         [ INFO ] model name: GoogleNet
+         [ INFO ] /models/mobilenet-v3-small-1.0-224-tf.xml
+         [ INFO ] model name: mobilenet-v3-small-1.0-224-tf
          [ INFO ]     inputs
          [ INFO ]         input name: data
          [ INFO ]         input type: f32
@@ -282,7 +281,7 @@ Sample Output
          [ INFO ]         output shape: {1, 1000}
          [ INFO ] Read input images
          [ INFO ] Set batch size 1
-         [ INFO ] model name: GoogleNet
+         [ INFO ] model name: mobilenet-v3-small-1.0-224-tf
          [ INFO ]     inputs
          [ INFO ]         input name: data
          [ INFO ]         input type: u8

@@ -16,10 +16,7 @@ arguments. Feel free to modify sample's source code to try out different options
 Before using the sample, refer to the following requirements:
 
 - The sample accepts any file format supported by ``core.read_model``.
-- The sample has been validated with: `alexnet <https://docs.openvino.ai/nightly/omz_models_model_alexnet.html>`__,
-  `googlenet-v1 <https://docs.openvino.ai/nightly/omz_models_model_googlenet_v1.html>`__,
-  `yolo-v3-tf <https://docs.openvino.ai/nightly/omz_models_model_yolo_v3_tf.html>`__,
-  `face-detection-0200 <https://docs.openvino.ai/nightly/omz_models_model_face_detection_0200.html>`__ models.
+- The sample has been validated with: [mobilenet-v3-small-1.0-224-tf](https://docs.openvino.ai/nightly/omz_models_model_mobilenet_v3_small_1_0_224_tf.html).
 - To build the sample, use instructions available at :ref:`Build the Sample Applications <build-samples>`
   section in "Get Started with Samples" guide.
 
@@ -91,18 +88,18 @@ Example
 
             import openvino as ov
 
-            ov_model = ov.convert_model('./models/googlenet-v1')
+            ov_model = ov.convert_model('./models/mobilenet-v3-small-1.0-224-tf')
             # or, when model is a Python model object
-            ov_model = ov.convert_model(googlenet-v1)
+            ov_model = ov.convert_model(mobilenet-v3-small-1.0-224-tf)
 
       .. tab-item:: CLI
          :sync: cli
 
          .. code-block:: console
 
-            ovc ./models/googlenet-v1
+            ovc ./models/mobilenet-v3-small-1.0-224-tf
 
-3. Perform benchmarking, using the ``googlenet-v1`` model on a ``CPU``:
+3. Perform benchmarking, using the ``mobilenet-v3-small-1.0-224-tf`` model on a ``CPU``:
 
    .. tab-set::
 
@@ -111,14 +108,14 @@ Example
 
          .. code-block:: console
 
-            python sync_benchmark.py googlenet-v1.xml
+            python sync_benchmark.py mobilenet-v3-small-1.0-224-tf.xml
 
       .. tab-item:: C++
          :sync: cpp
 
          .. code-block:: console
 
-            sync_benchmark googlenet-v1.xml
+            sync_benchmark mobilenet-v3-small-1.0-224-tf.xml
 
 
 Sample Output

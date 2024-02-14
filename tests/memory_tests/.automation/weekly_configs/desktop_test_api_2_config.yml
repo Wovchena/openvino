@@ -86,7 +86,7 @@
 - device:
     name: CPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP32
     source: omz
   references: {}
@@ -149,7 +149,7 @@
 - device:
     name: CPU
   model:
-    name: face-detection-retail-0044
+    name: faceboxes-pytorch
     precision: FP32
     source: omz
   references: {}
@@ -478,7 +478,7 @@
 - device:
     name: CPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP32
     source: omz
   references: {}
@@ -534,13 +534,6 @@
 - device:
     name: CPU
   model:
-    name: densenet-121
-    precision: FP32
-    source: omz
-  references: {}
-- device:
-    name: CPU
-  model:
     name: faster_rcnn_resnet101_coco
     precision: FP32
     source: omz
@@ -559,12 +552,6 @@
     precision: FP32
     source: omz
   references: {}
-- device:
-    name: CPU
-  model:
-    name: densenet-121-caffe2
-    precision: FP32
-    source: omz
   references: {}
 - device:
     name: CPU
@@ -1152,7 +1139,7 @@
 - device:
     name: GPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP32
     source: omz
   references: {}
@@ -1215,7 +1202,7 @@
 - device:
     name: GPU
   model:
-    name: face-detection-retail-0044
+    name: faceboxes-pytorch
     precision: FP32
     source: omz
   references: {}
@@ -1544,7 +1531,7 @@
 - device:
     name: GPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP32
     source: omz
   references: {}
@@ -1597,12 +1584,6 @@
     precision: FP32
     source: omz
   references: {}
-- device:
-    name: GPU
-  model:
-    name: densenet-121
-    precision: FP32
-    source: omz
   references: {}
 - device:
     name: GPU
@@ -1622,13 +1603,6 @@
     name: GPU
   model:
     name: colorization-v2
-    precision: FP32
-    source: omz
-  references: {}
-- device:
-    name: GPU
-  model:
-    name: densenet-121-caffe2
     precision: FP32
     source: omz
   references: {}
@@ -2218,7 +2192,7 @@
 - device:
     name: CPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP16
     source: omz
   references: {}
@@ -2281,7 +2255,7 @@
 - device:
     name: CPU
   model:
-    name: face-detection-retail-0044
+    name: faceboxes-pytorch
     precision: FP16
     source: omz
   references: {}
@@ -2610,7 +2584,7 @@
 - device:
     name: CPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP16
     source: omz
   references: {}
@@ -2663,12 +2637,6 @@
     precision: FP16
     source: omz
   references: {}
-- device:
-    name: CPU
-  model:
-    name: densenet-121
-    precision: FP16
-    source: omz
   references: {}
 - device:
     name: CPU
@@ -2688,13 +2656,6 @@
     name: CPU
   model:
     name: colorization-v2
-    precision: FP16
-    source: omz
-  references: {}
-- device:
-    name: CPU
-  model:
-    name: densenet-121-caffe2
     precision: FP16
     source: omz
   references: {}
@@ -2885,7 +2846,7 @@
 - device:
     name: GPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP16
     source: omz
   references: {}
@@ -2948,7 +2909,7 @@
 - device:
     name: GPU
   model:
-    name: face-detection-retail-0044
+    name: faceboxes-pytorch
     precision: FP16
     source: omz
   references: {}
@@ -3277,7 +3238,7 @@
 - device:
     name: GPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP16
     source: omz
   references: {}
@@ -3333,13 +3294,6 @@
 - device:
     name: GPU
   model:
-    name: densenet-121
-    precision: FP16
-    source: omz
-  references: {}
-- device:
-    name: GPU
-  model:
     name: faster_rcnn_resnet101_coco
     precision: FP16
     source: omz
@@ -3355,13 +3309,6 @@
     name: GPU
   model:
     name: colorization-v2
-    precision: FP16
-    source: omz
-  references: {}
-- device:
-    name: GPU
-  model:
-    name: densenet-121-caffe2
     precision: FP16
     source: omz
   references: {}

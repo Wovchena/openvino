@@ -207,7 +207,7 @@ int main(int argc, char* argv[]) {
         // -------- Step 11. Process output --------
         ov::Tensor output = infer_request.get_output_tensor();
 
-        // Read labels from file (e.x. AlexNet.labels)
+        // Read labels from file
         std::string labelFileName = fileNameNoExt(FLAGS_m) + ".labels";
         std::vector<std::string> labels;
 

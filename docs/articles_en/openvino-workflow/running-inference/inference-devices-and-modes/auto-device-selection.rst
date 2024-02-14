@@ -85,12 +85,12 @@ model and perform the first inference) is reduced when using AUTO. For example:
 
 .. code-block:: sh
 
-   benchmark_app -m ../public/alexnet/FP32/alexnet.xml -d GPU -niter 128
+   benchmark_app -m ../public/mobilenet-v3-small-1.0-224-tf/FP32/mobilenet-v3-small-1.0-224-tf.xml -d GPU -niter 128
 
 
 .. code-block:: sh
 
-   benchmark_app -m ../public/alexnet/FP32/alexnet.xml -d AUTO -niter 128
+   benchmark_app -m ../public/mobilenet-v3-small-1.0-224-tf/FP32/mobilenet-v3-small-1.0-224-tf.xml -d AUTO -niter 128
 
 
 

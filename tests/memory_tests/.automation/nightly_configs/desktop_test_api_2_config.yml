@@ -65,7 +65,7 @@
 - device:
     name: CPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP32
     source: omz
   references: {}
@@ -205,7 +205,7 @@
 - device:
     name: CPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP32
     source: omz
   references: {}
@@ -226,7 +226,7 @@
 - device:
     name: CPU
   model:
-    name: densenet-121
+    name: densenet-121-tf
     precision: FP32
     source: omz
   references: {}
@@ -298,7 +298,7 @@
 - device:
     name: GPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP32
     source: omz
   references: {}
@@ -438,7 +438,7 @@
 - device:
     name: GPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP32
     source: omz
   references: {}
@@ -459,7 +459,7 @@
 - device:
     name: GPU
   model:
-    name: densenet-121
+    name: densenet-121-tf
     precision: FP32
     source: omz
   references: {}
@@ -531,7 +531,7 @@
 - device:
     name: CPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP16
     source: omz
   references: {}
@@ -671,7 +671,7 @@
 - device:
     name: CPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP16
     source: omz
   references: {}
@@ -692,7 +692,7 @@
 - device:
     name: CPU
   model:
-    name: densenet-121
+    name: densenet-121-tf
     precision: FP16
     source: omz
   references: {}
@@ -764,7 +764,7 @@
 - device:
     name: GPU
   model:
-    name: alexnet
+    name: mobilenet-v3-small-1.0-224-tf
     precision: FP16
     source: omz
   references: {}
@@ -904,7 +904,7 @@
 - device:
     name: GPU
   model:
-    name: caffenet
+    name: googlenet-v3-pytorch
     precision: FP16
     source: omz
   references: {}
@@ -925,7 +925,7 @@
 - device:
     name: GPU
   model:
-    name: densenet-121
+    name: densenet-121-tf
     precision: FP16
     source: omz
   references: {}

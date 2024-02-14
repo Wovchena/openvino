@@ -14,8 +14,7 @@ Synchronous Inference Request API. Before using the sample, refer to the followi
 
 - Models with only one input and output are supported.
 - The sample accepts any file format supported by ``core.read_model``.
-- The sample has been validated with: `alexnet <https://docs.openvino.ai/nightly/omz_models_model_alexnet.html>`__,
-  `googlenet-v1 <https://docs.openvino.ai/nightly/omz_models_model_googlenet_v1.html>`__ models.
+- Example model: [mobilenet-v3-small-1.0-224-tf](https://docs.openvino.ai/nightly/omz_models_model_mobilenet_v3_small_1_0_224_tf.html).
 - To build the sample, use instructions available at :ref:`Build the Sample Applications <build-samples>`
   section in "Get Started with Samples" guide.
 
@@ -119,16 +118,16 @@ Example
 
             import openvino as ov
 
-            ov_model = ov.convert_model('./models/alexnet')
+            ov_model = ov.convert_model('./models/mobilenet-v3-small-1.0-224-tf')
             # or, when model is a Python model object
-            ov_model = ov.convert_model(alexnet)
+            ov_model = ov.convert_model(mobilenet-v3-small-1.0-224-tf)
 
       .. tab-item:: CLI
          :sync: cli
 
          .. code-block:: console
 
-            ovc ./models/alexnet
+            ovc ./models/mobilenet-v3-small-1.0-224-tf
 
 3. Perform inference of an image, using a model on a ``GPU``, for example:
 
@@ -139,21 +138,21 @@ Example
 
          .. code-block:: console
 
-            python hello_classification.py ./models/alexnet/alexnet.xml ./images/banana.jpg GPU
+            python hello_classification.py ./models/mobilenet-v3-small-1.0-224-tf/mobilenet-v3-small-1.0-224-tf.xml ./images/banana.jpg GPU
 
       .. tab-item:: C++
          :sync: cpp
 
          .. code-block:: console
 
-            hello_classification ./models/googlenet-v1.xml ./images/car.bmp GPU
+            hello_classification ./models/mobilenet-v3-small-1.0-224-tf.xml ./images/car.bmp GPU
 
       .. tab-item:: C
          :sync: c
 
          .. code-block:: console
 
-            hello_classification_c alexnet.xml ./opt/intel/openvino/samples/scripts/car.png GPU
+            hello_classification_c mobilenet-v3-small-1.0-224-tf.xml ./opt/intel/openvino/samples/scripts/car.png GPU
 
 Sample Output
 #############
@@ -169,7 +168,7 @@ Sample Output
       .. code-block:: console
 
          [ INFO ] Creating OpenVINO Runtime Core
-         [ INFO ] Reading the model: /models/alexnet/alexnet.xml
+         [ INFO ] Reading the model: /models/mobilenet-v3-small-1.0-224-tf/mobilenet-v3-small-1.0-224-tf.xml
          [ INFO ] Loading the model to the plugin
          [ INFO ] Starting inference in synchronous mode
          [ INFO ] Image path: /images/banana.jpg

@@ -8,7 +8,7 @@ For more detailed information on how this sample works, check the dedicated [art
 
 | Options                    | Values                                                                                                                                                                      |
 | ---------------------------| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Validated Models           | [alexnet](https://docs.openvino.ai/2023.3/omz_models_model_alexnet.html), [googlenet-v1](https://docs.openvino.ai/2023.3/omz_models_model_googlenet_v1.html)                |
+| Example model              | [mobilenet-v3-small-1.0-224-tf](https://docs.openvino.ai/nightly/omz_models_model_mobilenet_v3_small_1_0_224_tf.html)                        |
 | Model Format               | OpenVINO Intermediate Representation (\*.xml + \*.bin), ONNX (\*.onnx)                                                                                              |
 | Validated images           | The sample uses OpenCV\* to [read input image](https://docs.opencv.org/master/d4/da8/group__imgcodecs.html#ga288b8b3da0892bd651fce07b3bbd3a56) (\*.bmp, \*.png)             |
 | Supported devices          | [All](https://docs.openvino.ai/2023.3/openvino_docs_OV_UG_supported_plugins_Supported_Devices.html)                                                                         |

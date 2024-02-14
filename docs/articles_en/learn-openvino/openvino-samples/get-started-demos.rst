@@ -261,11 +261,6 @@ Download the Models
 You need a model that is specific for your inference task. You can get it from one of model repositories, such as TensorFlow Zoo, HuggingFace, or TensorFlow Hub.
 
 
-Convert the Model
---------------------
-
-If Your model requires conversion, check the `article <https://docs.openvino.ai/2023.3/openvino_docs_get_started_get_started_demos.html>`__ for information how to do it.
-
 .. _download-media:
 
 Download a Media to use
@@ -427,21 +422,21 @@ The following command shows how to run the Image Classification Code Sample usin
 
             .. code-block:: sh
 
-               python classification_sample_async.py -m ~/ir/googlenet-v1.xml -i ~/Downloads/dog.bmp -d CPU
+               python classification_sample_async.py -m ~/ir/mobilenet-v3-small-1.0-224-tf.xml -i ~/Downloads/dog.bmp -d CPU
 
          .. tab-item:: Windows
             :sync: windows
 
             .. code-block:: bat
 
-               python classification_sample_async.py -m %USERPROFILE%\Documents\ir\googlenet-v1.xml -i %USERPROFILE%\Downloads\dog.bmp -d CPU
+               python classification_sample_async.py -m %USERPROFILE%\Documents\ir\mobilenet-v3-small-1.0-224-tf.xml -i %USERPROFILE%\Downloads\dog.bmp -d CPU
 
          .. tab-item:: macOS
             :sync: macos
 
             .. code-block:: sh
 
-               python classification_sample_async.py -m ~/ir/googlenet-v1.xml -i ~/Downloads/dog.bmp -d CPU
+               python classification_sample_async.py -m ~/ir/mobilenet-v3-small-1.0-224-tf.xml -i ~/Downloads/dog.bmp -d CPU
 
    .. tab-item:: C++
       :sync: cpp
@@ -453,21 +448,21 @@ The following command shows how to run the Image Classification Code Sample usin
 
             .. code-block:: sh
 
-               ./classification_sample_async -i ~/Downloads/dog.bmp -m ~/ir/googlenet-v1.xml -d CPU
+               ./classification_sample_async -i ~/Downloads/dog.bmp -m ~/ir/mobilenet-v3-small-1.0-224-tf.xml -d CPU
 
          .. tab-item:: Windows
             :sync: windows
 
             .. code-block:: bat
 
-               .\classification_sample_async.exe -i %USERPROFILE%\Downloads\dog.bmp -m %USERPROFILE%\Documents\ir\googlenet-v1.xml -d CPU
+               .\classification_sample_async.exe -i %USERPROFILE%\Downloads\dog.bmp -m %USERPROFILE%\Documents\ir\mobilenet-v3-small-1.0-224-tf.xml -d CPU
 
          .. tab-item:: macOS
             :sync: macos
 
             .. code-block:: sh
 
-               ./classification_sample_async -i ~/Downloads/dog.bmp -m ~/ir/googlenet-v1.xml -d CPU
+               ./classification_sample_async -i ~/Downloads/dog.bmp -m ~/ir/mobilenet-v3-small-1.0-224-tf.xml -d CPU
 
 
 When the sample application is complete, you are given the label and confidence for the top 10 categories. The input image and sample output of the inference results is shown below:

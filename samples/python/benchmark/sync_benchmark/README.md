@@ -8,7 +8,7 @@ For more detailed information on how this sample works, check the dedicated [art
 
 | Options                     | Values                                                                                               |
 | ----------------------------| -----------------------------------------------------------------------------------------------------|
-| Validated Models            | [alexnet](https://docs.openvino.ai/2023.3/omz_models_model_alexnet.html),                            |
+| Example model               | [mobilenet-v3-small-1.0-224-tf](https://docs.openvino.ai/nightly/omz_models_model_mobilenet_v3_small_1_0_224_tf.html)|
 |                             | [googlenet-v1](https://docs.openvino.ai/2023.3/omz_models_model_googlenet_v1.html),                  |
 |                             | [yolo-v3-tf](https://docs.openvino.ai/2023.3/omz_models_model_yolo_v3_tf.html),                      |
 |                             | [face-detection-0200](https://docs.openvino.ai/2023.3/omz_models_model_face_detection_0200.html)     |

@@ -15,7 +15,7 @@ with images in NV12 color format using Synchronous Inference Request API. Before
 using the sample, refer to the following requirements:
 
 - The sample accepts any file format supported by ``ov::Core::read_model``.
-- The sample has been validated with: `alexnet <https://docs.openvino.ai/nightly/omz_models_model_alexnet.html>`__ model and
+- Example model: [mobilenet-v3-small-1.0-224-tf](https://docs.openvino.ai/nightly/omz_models_model_mobilenet_v3_small_1_0_224_tf.html) model and
   uncompressed images in the NV12 color format - \*.yuv
 - To build the sample, use instructions available at :ref:`Build the Sample Applications <build-samples>`
   section in "Get Started with Samples" guide.
@@ -114,7 +114,7 @@ Example
 
    .. code-block:: console
 
-      ovc ./models/alexnet
+      ovc ./models/mobilenet-v3-small-1.0-224-tf
 
 3. Perform inference of an NV12 image, using a model on a ``CPU``, for example:
 
@@ -125,7 +125,7 @@ Example
 
          .. code-block:: console
 
-            hello_nv12_input_classification ./models/alexnet.xml ./images/cat.yuv 300x300 CPU
+            hello_nv12_input_classification ./models/mobilenet-v3-small-1.0-224-tf.xml ./images/cat.yuv 300x300 CPU
 
       .. tab-item:: C
          :sync: c
@@ -133,7 +133,7 @@ Example
 
          .. code-block:: console
 
-            hello_nv12_input_classification_c ./models/alexnet.xml ./images/cat.yuv 300x300 CPU
+            hello_nv12_input_classification_c ./models/mobilenet-v3-small-1.0-224-tf.xml ./images/cat.yuv 300x300 CPU
 
 
 Sample Output
@@ -151,8 +151,8 @@ Sample Output
          [ INFO ] OpenVINO Runtime version ......... <version>
          [ INFO ] Build ........... <build>
          [ INFO ]
-         [ INFO ] Loading model files: \models\alexnet.xml
-         [ INFO ] model name: AlexNet
+         [ INFO ] Loading model files: \models\mobilenet-v3-small-1.0-224-tf.xml
+         [ INFO ] model name: mobilenet-v3-small-1.0-224-tf
          [ INFO ]     inputs
          [ INFO ]         input name: data
          [ INFO ]         input type: f32

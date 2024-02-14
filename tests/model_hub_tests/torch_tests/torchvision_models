@@ -1,4 +1,4 @@
-alexnet,none
+mobilenet-v3-small-1.0-224-tf,none
 convnext_base,none
 convnext_large,none
 convnext_small,none
