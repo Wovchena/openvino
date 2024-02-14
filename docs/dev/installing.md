@@ -140,12 +140,12 @@ Download the following model to run the Image Classification Sample:
 
 Linux and macOS:
 ```sh
-omz_downloader --name googlenet-v1 --output_dir ~/models
+omz_downloader --name mobilenet-v3-small-1.0-224-tf --output_dir ~/models
 ```
 
 Windows:
 ```bat
-omz_downloader --name googlenet-v1 --output_dir %USERPROFILE%\Documents\models
+omz_downloader --name mobilenet-v3-small-1.0-224-tf --output_dir %USERPROFILE%\Documents\models
 ```
 
 4. Convert the Model with Model Optimizer
