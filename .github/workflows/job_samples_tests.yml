@@ -71,7 +71,7 @@ jobs:
         run: brew install coreutils
 
       - name: Fetch setup_python action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           sparse-checkout: |
             .github/actions/setup_python/action.yml

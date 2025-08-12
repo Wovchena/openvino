@@ -59,7 +59,7 @@ jobs:
           echo "ONNX_RUNTIME_BUILD_DIR=$GITHUB_WORKSPACE/onnxruntime/build" >> "$GITHUB_ENV"
 
       - name: Fetch install_build_dependencies.sh and setup_python action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           sparse-checkout: |
             install_build_dependencies.sh

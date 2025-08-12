@@ -74,7 +74,7 @@ jobs:
         run: $INSTALL_DIR/install_dependencies/install_openvino_dependencies.sh -c=core -c=dev -y -c=gpu
 
       - name: Fetch setup_python action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           sparse-checkout: |
             .github/actions/setup_python/action.yml
@@ -302,7 +302,7 @@ jobs:
 
       - name: Clone API snippets
         if: runner.os != 'macOS'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           sparse-checkout: openvino/docs/snippets
           path: ${{ env.OPENVINO_REPO }}
