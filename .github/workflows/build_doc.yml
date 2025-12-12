@@ -55,7 +55,7 @@ jobs:
 
       - name: Cache documentation
         id: cache_sphinx_docs
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: build/docs/_build/.doctrees
           key: sphinx-docs-cache
