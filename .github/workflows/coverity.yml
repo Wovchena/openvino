@@ -52,14 +52,14 @@ jobs:
           apt-get install --assume-yes --no-install-recommends git ca-certificates
 
       - name: Clone OpenVINO
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: ${{ env.OPENVINO_REPO }}
           submodules: 'true'
           ref: ${{ inputs.openvinoRef }}
 
       - name: Clone OpenVINO Contrib
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'openvinotoolkit/openvino_contrib'
           path: ${{ env.OPENVINO_CONTRIB_REPO }}

@@ -68,7 +68,7 @@ jobs:
         run: $INSTALL_DIR/install_dependencies/install_openvino_dependencies.sh -c=core -c=dev -c=gpu -y
 
       - name: Fetch setup_python action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             .github/actions/setup_python/action.yml

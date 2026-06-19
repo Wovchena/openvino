@@ -28,7 +28,7 @@ jobs:
       skip_workflow: "${{ steps.smart_ci.outputs.skip_workflow }}"
     steps:
       - name: checkout action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: .github/actions/smart-ci
 
@@ -89,13 +89,13 @@ jobs:
           apt-get install --assume-yes --no-install-recommends git ca-certificates
 
       - name: Clone OpenVINO
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: ${{ env.OPENVINO_REPO }}
           submodules: 'true'
 
       - name: Clone OpenVINO Contrib
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'openvinotoolkit/openvino_contrib'
           path: ${{ env.OPENVINO_CONTRIB_REPO }}
@@ -370,7 +370,7 @@ jobs:
           popd
 
       - name: Fetch setup_python action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             .github/actions/setup_python/action.yml
@@ -536,7 +536,7 @@ jobs:
         run: echo 'Acquire::Retries "10";' > /etc/apt/apt.conf.d/80-retries
 
       - name: Fetch install_build_dependencies.sh
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             install_build_dependencies.sh
@@ -569,7 +569,7 @@ jobs:
           popd
 
       - name: Clone OpenVINO Contrib
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'openvinotoolkit/openvino_contrib'
           path: ${{ env.OPENVINO_CONTRIB_REPO }}
@@ -644,7 +644,7 @@ jobs:
 
     steps:
       - name: checkout action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             .github/actions/setup_python
@@ -660,7 +660,7 @@ jobs:
           show-cache-info: 'false'
 
       - name: Clone OpenVINO Tokenizers
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'openvinotoolkit/openvino_tokenizers'
           path: ${{ env.OPENVINO_TOKENIZERS_REPO }}

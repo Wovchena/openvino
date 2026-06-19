@@ -27,7 +27,7 @@ jobs:
       skip_workflow: "${{ steps.smart_ci.outputs.skip_workflow }}"
     steps:
       - name: checkout action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: .github/actions/smart-ci
 
@@ -72,13 +72,13 @@ jobs:
 
     steps:
       - name: Clone OpenVINO
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: 'openvino'
           submodules: 'true'
 
       - name: Clone test models
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'openvinotoolkit/testdata'
           path: 'testdata'
@@ -286,13 +286,13 @@ jobs:
 
     steps:
       - name: Clone OpenVINO
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           path: 'openvino'
           submodules: 'true'
 
       - name: Clone test models
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: 'openvinotoolkit/testdata'
           path: 'testdata'
@@ -382,7 +382,7 @@ jobs:
         run: Expand-Archive ${{ env.INSTALL_TEST_DIR }}/openvino_tests.zip -DestinationPath "${{ env.INSTALL_TEST_DIR }}"
 
       - name: Fetch setup_python action
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           sparse-checkout: |
             .github/actions/setup_python/action.yml
